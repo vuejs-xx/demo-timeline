@@ -233,7 +233,6 @@ angular.module('timelineApp.services', [])
                     var domain = up.getOption('domain');
                     var res = JSON.parse(info);
                     var sourceLink = domain + res.key; //获取上传成功后的文件的Url
-                    console.log('uploaded: ' + sourceLink);
                     $rootScope.$broadcast('upload', sourceLink);
                 },
                 'Error': function (up, err, errTip) {
@@ -258,7 +257,6 @@ angular.module('timelineApp.services', [])
         var _dataRefCache = {};
 
         this.getDataRef = function (path) {
-            //https://blazing-inferno-4750.firebaseio.com/
             _dataRefCache[path] = _dataRefCache[path] || new Wilddog('https://wild-horse-7141.wilddogio.com/' + path);
             return _dataRefCache[path];
         };

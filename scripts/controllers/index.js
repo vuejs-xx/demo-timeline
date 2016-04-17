@@ -1,5 +1,5 @@
 angular.module('timelineApp.controllers', [])
-    .controller('PostCtrl', ['$scope', '$timeout', 'WildDog', 'QiNiu', function ($scope, $timeout, WildDog, qiniu) {
+    .controller('PostCtrl', ['$scope','$timeout', 'WildDog', 'QiNiu', function ($scope, $timeout, WildDog, qiniu) {
         var postRef = WildDog.getDataRef('posts');
 
         $scope.text = '';
@@ -15,7 +15,6 @@ angular.module('timelineApp.controllers', [])
                     array.push(val[k]);
                 }
             }
-            console.log(array);
             $timeout(function () {
                 $scope.posts = array.reverse();
             }, 0);
@@ -29,9 +28,9 @@ angular.module('timelineApp.controllers', [])
             postRef.push({
                 text: t,
                 img: i,
-                time: Date.now()
+                time: Date.now(),
+                complete:false
             });
-            console.log('add one post');
             $scope.text = '';
             $scope.img = '';
         };
